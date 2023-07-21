@@ -5,7 +5,6 @@
   "version": "1.6.0",
   "private": false,
   "scripts": {
-    "prestart": "node aspnetcore-https && node aspnetcore-react",
     "start": "react-scripts start",
     "start:dev": "rimraf ./build && react-scripts start",
     "build": "react-scripts build",
@@ -51,7 +50,7 @@
     "apexcharts": "^3.36.0",
     "change-case": "^4.1.2",
     "date-fns": "^2.29.3",
-    "dayjs": "^1.11.8",
+    "dayjs": "^1.11.9",
     "express": "^4.18.2",
     "history": "^5.3.0",
     "http-proxy-middleware": "^2.0.6",

@@ -1,10 +1,5 @@
-// icons
 import SearchIcon from '@mui/icons-material/Search';
-
-// mui components
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container'
-import OutlinedInput from '@mui/material/OutlinedInput'
+import {Box, Container, OutlinedInput} from '@mui/material';
 import IconButton from "@mui/material/IconButton";
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -13,14 +8,10 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
-
-// other
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
-// my components
 import { PageSubheaderWithBackButton } from '../components/page-subheader-with-back-button/PageSubheaderWithBackButton';
 import { GeneralLayout } from '../layouts/GeneralLayout';
 
@@ -29,7 +20,7 @@ const rows = [
     name: 'Петров Петр Петрович',
     id: '12',
     group: 'IT2041',
-    isExpelled: false,
+    isExcluded: false,
     login: 'petrov1996',
     spec: '09.04.02 Информационные системы и технологии',
   },
@@ -37,7 +28,7 @@ const rows = [
     name: 'Иванов Иван Иванович',
     id: '21',
     group: 'ИТ1622',
-    isExpelled: true,
+    isExcluded: true,
     login: 'ivanov_ivan',
     spec: '09.03.02 Информационные системы и технологии. Программа прикладного бакалавриата',
   },
@@ -80,7 +71,7 @@ const Students = () => {
                 <TableCell>#</TableCell>
                 <TableCell align="center">Ф.И.О.</TableCell>
                 <TableCell align="center">Группа (на текущий момент)</TableCell>
-                <TableCell align="center">Логин личного кабинета</TableCell>
+                <TableCell align="center">Логин Личного кабинета</TableCell>
                 <TableCell align="center">ОПОП ВО</TableCell>
               </TableRow>
             </TableHead>
@@ -93,16 +84,7 @@ const Students = () => {
                   <TableCell component="th" scope="row" align="center">
                     <Link to={`${row.id}`}>{row.name}</Link>
                   </TableCell>
-                  <TableCell 
-				  	align="center"
-				  >
-				  	{ row.group }
-				  	{ row.isExpelled && 
-							<Typography>
-								(отчислен)
-							</Typography>	
-					}
-				  </TableCell>
+                  <TableCell align="center">{row.group}</TableCell>
                   <TableCell align="center">{row.login}</TableCell>
                   <TableCell align="center">{row.spec}</TableCell>
                 </TableRow>
