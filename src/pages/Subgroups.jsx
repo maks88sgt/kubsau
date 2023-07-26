@@ -35,12 +35,12 @@ const Group = ({
 	amountOfHours 
 }) => {
 	return (
-		<Box
-			sx={{
-				padding: "10px",
-				border: "1px solid grey",
-				borderRadius: "5px",
-			}}
+		<Stack
+			direction="column"
+			spacing={2}
+			border="1px solid grey"
+			borderRadius="5px"
+			padding={2}
 		>
 			<Stack
 				direction="row"
@@ -80,7 +80,7 @@ const Group = ({
 					/>
 				))
 			}
-		</Box>
+		</Stack>
 	)
 }
 
@@ -95,14 +95,12 @@ const Subgroup = ({
 	}
 
 	return (
-		<Box
-			sx={{
-				marginTop: "10px",
-				marginBottom: "10px",
-				padding: "10px",
-				border: "1px solid blue",
-				borderRadius: "5px",
-			}}
+		<Stack
+			direction="column"
+			spacing={2}
+			border="1px solid blue"
+			borderRadius="5px"
+			padding={2}
 		>
 			<Stack
 				direction="row"
@@ -146,7 +144,7 @@ const Subgroup = ({
 					startIcon={<SaveIcon />}
 				/>
 			</Stack>
-		</Box>
+		</Stack>
 	)
 }
 
@@ -398,10 +396,10 @@ const Subgroups = (props) => {
         	<Helmet>
                 <title> Редактирование курса | АИС "Успеваемость" </title>
             </Helmet>
-			<Container
-				sx={{
-					padding: "100px"
-				}}
+			<Stack
+				padding="100px"
+				direction="column"
+				spacing={2}
 			>
 				<PageSubheaderWithBackButton subheader="Редактирование курса"/>
 				<Typography>
@@ -415,7 +413,7 @@ const Subgroups = (props) => {
 				</Alert>
 				<Stack
 					direction="column"
-					gap="10px"
+					spacing={2}
 				>
 					<Tabs
 						value={tabIndex}
@@ -459,7 +457,7 @@ const Subgroups = (props) => {
 						))
 					}
 				</Stack>
-			</Container>
+			</Stack>
    	    </GeneralLayout>
     );
 }

@@ -145,51 +145,64 @@ const ManagePracticesForGroup = () => {
 					{
 						group.practices.map(practice => (
 						<>
-							<Card>
+							<Card
+								sx={{
+									display: "flex",
+									flexDirection: "column",
+									alignContent: "center",
+								}}
+							>
 								<CardContent>
-									<Typography>
-										{ `${practice.type} практика` }
-									</Typography>
-									{
-										practice.isApproved
-										? 
-										<Chip 
-											icon={<CheckIcon />} 
-											label="Утверждено" 
-										/> 
-										: 
-										<Chip 
-											icon={<CloseIcon />} 
-												label="Не утверждено" 
-										/>	
-									}
-									{ 
-										practice.isInternship
-										?
+									<Stack
+										direction="column"
+										spacing={1}
+									>
+										<Typography>
+											{ `${practice.type} практика` }
+										</Typography>
+										{
+											practice.isApproved
+											? 
+											<Chip 
+												icon={<CheckIcon />} 
+												label="Утверждено" 
+											/> 
+											: 
+											<Chip 
+												icon={<CloseIcon />} 
+													label="Не утверждено" 
+											/>	
+										}
+										{ 
+											practice.isInternship
+											?
+											<Chip
+												icon={<PlaceIcon />}
+												label="Производственная"
+											/>
+											:
+												<Chip
+												icon={<PlaceIcon />}
+												label="Не производственная"
+											/>
+										}
 										<Chip
-											icon={<PlaceIcon />}
-											label="Производственная"
+											icon={<RadioButtonCheckedIcon />}
+											label={practice.examType}
 										/>
-										:
 										<Chip
-											icon={<PlaceIcon />}
-											label="Не производственная"
+											icon={<CalendarMonthIcon />}
+											label={`Практика: ${practice.practiceStartDate} - ${practice.practiceEndDate}`} 
 										/>
-									}
-									<Chip
-										icon={<RadioButtonCheckedIcon />}
-										label={practice.examType}
-									/>
-									<Chip
-										icon={<CalendarMonthIcon />}
-										label={`Практика: ${practice.practiceStartDate} - ${practice.practiceEndDate}`} 
-									/>
-									<Chip
-										icon={<ShieldIcon />}
-										label={ `Защита: ${practice.defenseStartDate} - ${practice.defenseEndDate}` }
-									/>
+										<Chip
+											icon={<ShieldIcon />}
+											label={ `Защита: ${practice.defenseStartDate} - ${practice.defenseEndDate}` }
+										/>
+									</Stack>
 								</CardContent>
-								<CardActions>
+								<CardActions
+									
+								>
 									<Button
 										startIcon={<EditIcon />}
 										onClick={() => {}}
@@ -206,48 +219,57 @@ const ManagePracticesForGroup = () => {
 							</Card>
 							<Stack
 								direction="row"
-								flexWrap="wrap"
-								gap="20px"
+								spacing={2}
+								justifyContent="space-between"
 							>
 							{
 								practice.statements.map(statement => (
 									<Card>
 										<CardContent>
-											<Typography>
-												{ `${statement.type} ведомость` }
-											</Typography>
-											{
-												statement.isNeeded
-													?
-													<>
-														<Chip
-															label={ `Ведомость №${statement.id}` }
-														/>
-														<Chip
-															label={ `Дата закрытия: ${statement.endDate}` }
-														/>
-														{ 
-															statement.isDelivered
-															?
+											<Stack
+												direction="column"
+												spacing={1}
+											>
+												<Typography>
+													{ `${statement.type} ведомость` }
+												</Typography>
+												{
+													statement.isNeeded
+														?
+														<>
 															<Chip
-																icon={<DoneAllIcon />}
-																label={`Ведомость ${ statement.isDelivered ? "сдана" : "не сдана" }`}
+																label={ `Ведомость №${statement.id}` }
 															/>
-															:
 															<Chip
-																icon={<CloseIcon />}
-																label={`Ведомость ${ statement.isDelivered ? "сдана" : "не сдана" }`}
+																label={ `Дата закрытия: ${statement.endDate}` }
 															/>
-														}
-													</>
-													:
-													<Chip
-														label="Ведомость не требуется"
-													/>
-											}
-											</CardContent>
-											{ statement.isNeeded &&
-												<CardActions>
+															{ 
+																statement.isDelivered
+																?
+																<Chip
+																	icon={<DoneAllIcon />}
+																	label={`Ведомость ${ statement.isDelivered ? "сдана" : "не сдана" }`}
+																/>
+																:
+																<Chip
+																	icon={<CloseIcon />}
+																	label={`Ведомость ${ statement.isDelivered ? "сдана" : "не сдана" }`}
+																/>
+															}
+														</>
+														:
+														<Chip
+															label="Ведомость не требуется"
+														/>
+												}
+											</Stack>
+										</CardContent>
+										{ statement.isNeeded &&
+											<CardActions>
+												<Stack
+													direction="column"
+													spacing={1}
+												>
 													<Button
 														startIcon={<DescriptionIcon />}
 														onClick={() => {}}
@@ -272,11 +294,12 @@ const ManagePracticesForGroup = () => {
 													>
 														Удалить
 													</Button>
-												</CardActions>	
-											}
-										</Card>
-									))
-								}
+												</Stack>
+											</CardActions>	
+										}
+									</Card>
+								))
+							}
 							</Stack>
 						</>
 					))
