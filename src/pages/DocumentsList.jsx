@@ -155,133 +155,138 @@ const DocumentsList = () => {
 			<Container
 				sx={{ paddingTop: '100px' }}
 			>
-          		<PageSubheaderWithBackButton
-					subheader={'Список документов о пропусках'}
-				/>
 				<Stack
-					direction="row"
-					justifyContent="space-between"
+					direction="column"
 					gap="20px"
 				>
-					<FormControl
-						fullWidth
+          			<PageSubheaderWithBackButton
+						subheader={'Список документов о пропусках'}
+					/>
+					<Stack
+						direction="row"
+						justifyContent="space-between"
+						gap="20px"
 					>
-						<InputLabel
-							id="group-select-label"
+						<FormControl
+							fullWidth
 						>
-							Группа
-						</InputLabel>
-						<Select
-							labelId="group-select-label"
-							value={group.name}
-							label="Группа"
-							onChange={handleGroupChange}
+							<InputLabel
+								id="group-select-label"
+							>
+								Группа
+							</InputLabel>
+							<Select
+								labelId="group-select-label"
+								value={group.name}
+								label="Группа"
+								onChange={handleGroupChange}
+							>
+								{
+									groups.map(gr => (
+										<MenuItem
+											value={gr}
+										>
+											{gr.name}
+										</MenuItem>
+									))
+								}
+							</Select>
+						</FormControl>
+						<FormControl
+							fullWidth
 						>
-							{
-								groups.map(gr => (
-									<MenuItem
-										value={gr}
-									>
-										{gr.name}
-									</MenuItem>
-								))
-							}
-						</Select>
-					</FormControl>
-					<FormControl
-						fullWidth
-					>
-						<InputLabel
-							id="student-select-label"
+							<InputLabel
+								id="student-select-label"
+							>
+								Студент
+							</InputLabel>
+							<Select
+								labelId="student-select-label"
+								value={student.name}
+								label="Студент"
+								onChange={handleStudentChange}
+							>
+								{
+									group.students && group.students.map(st => (
+										<MenuItem
+											value={st}
+										>
+											{st.name}
+										</MenuItem>
+									))
+								}
+							</Select>
+						</FormControl>
+						<Button
+							fullWidth
 						>
-							Студент
-						</InputLabel>
-						<Select
-							labelId="student-select-label"
-							value={student.name}
-							label="Студент"
-							onChange={handleStudentChange}
-						>
-							{
-								group.students && group.students.map(st => (
-									<MenuItem
-										value={st}
-									>
-										{st.name}
-									</MenuItem>
-								))
-							}
-						</Select>
-					</FormControl>
-					<Button
-						fullWidth
-					>
-						Зарегистировать документ
-					</Button>
-				</Stack>
-				<Table>
-					<TableHead>
-						<TableRow>
-							<TableCell>
-								Имя студента
-							</TableCell>
-							<TableCell>
-								Тип документа
-							</TableCell>
-							<TableCell>
-								Дата начала действия
-							</TableCell>
-							<TableCell>
-								Дата окончания действия
-							</TableCell>
-							<TableCell>
-								Комментарий
-							</TableCell>
-							<TableCell>
-								Операции
-							</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{ currentDocuments.map(doc => (
+							Зарегистировать документ
+						</Button>
+					</Stack>
+					<Table>
+						<TableHead>
 							<TableRow>
 								<TableCell>
-									{ doc.student_name }
+									Имя студента
 								</TableCell>
 								<TableCell>
-									{ doc.type }
+									Тип документа
 								</TableCell>
 								<TableCell>
-									{ 
-										`${doc.start_date} (с ${doc.start_class} пары)`
-									}
+									Дата начала действия
 								</TableCell>
 								<TableCell>
-									{
-										`${doc.end_date} (до ${doc.end_class} пары)`
-									}
+									Дата окончания действия
 								</TableCell>
 								<TableCell>
-									{ doc.comment }
+									Комментарий
 								</TableCell>
 								<TableCell>
-									{
-										doc.edit_available &&
-											<Button
-												startIcon={<EditIcon />}
-											/>
-									}
-									{
-										doc.delete_available &&
-											<Button
-												startIcon={<DeleteIcon />}	
-											/>		
-									}
+									Операции
 								</TableCell>
 							</TableRow>
-						)) }
-					</TableBody>
-				</Table>
+						</TableHead>
+						<TableBody>
+							{ currentDocuments.map(doc => (
+								<TableRow>
+									<TableCell>
+										{ doc.student_name }
+									</TableCell>
+									<TableCell>
+										{ doc.type }
+									</TableCell>
+									<TableCell>
+										{ 
+											`${doc.start_date} (с ${doc.start_class} пары)`
+										}
+									</TableCell>
+									<TableCell>
+										{
+											`${doc.end_date} (до ${doc.end_class} пары)`
+										}
+									</TableCell>
+									<TableCell>
+										{ doc.comment }
+									</TableCell>
+									<TableCell>
+										{
+											doc.edit_available &&
+												<Button
+													startIcon={<EditIcon />}
+												/>
+										}
+										{
+											doc.delete_available &&
+												<Button
+													startIcon={<DeleteIcon />}	
+												/>		
+										}
+									</TableCell>
+								</TableRow>
+							)) }
+						</TableBody>
+					</Table>
+				</Stack>
 			</Container>
 		</GeneralLayout>
 	)

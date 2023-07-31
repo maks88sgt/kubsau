@@ -4,7 +4,8 @@ import { Helmet } from 'react-helmet-async';
 
 import { semesters } from '../_mock/semesters';
 import { FlexColumnBlock } from '../components/FlexColumnBlock';
-import {Disciplines} from "../components/group-info/Disciplines";
+import { Disciplines } from "../components/group-info/Disciplines";
+import { Exams } from "../components/group-info/Exams";
 import { PageSubheaderWithBackButton } from '../components/page-subheader-with-back-button/PageSubheaderWithBackButton';
 import { SelectSemester } from '../components/select-semester/SelectSemester';
 import { GeneralLayout } from '../layouts/GeneralLayout';
@@ -45,6 +46,7 @@ const Group = () => {
           </FlexColumnBlock>
         </FlexColumnBlock>
         <Disciplines semester={selectedSemester.label}/>
+	  	<Exams semester={selectedSemester.label}/>
       </Container>
     </GeneralLayout>
   );
