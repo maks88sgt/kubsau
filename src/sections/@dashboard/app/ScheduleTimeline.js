@@ -27,7 +27,7 @@ function RenderDefault(title, subheader, list, ...other) {
         }}
       >
         <Timeline>
-          {list.map((item, index) => (
+          {list?.map((item, index) => (
               <OrderItem key={item.lessonNumber} item={item} isLast={index === list.length - 1} index={index} />
           ))}
         </Timeline>
@@ -55,7 +55,7 @@ function OrderItem({ item, isLast, index }) {
     <TimelineItem>
       <TimelineSeparator>
         <TimelineDot
-           color={'success'} 
+           color={'success'}
         />
         {isLast ? null : <TimelineConnector />}
       </TimelineSeparator>

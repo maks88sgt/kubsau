@@ -35,6 +35,7 @@ import StatementsForCoursePage from "./pages/StatementsForCourse"
 import ManagePracticesByCoursesPage from "./pages/ManagePracticesByCourses"
 import ManagePracticesForGroupPage from "./pages/ManagePracticesForGroup"
 import CreatePracticePage from "./pages/CreatePractice"
+import {Auth} from "./pages/Auth";
 
 export const AppRoutes = [
 	{
@@ -186,6 +187,10 @@ export const AppRoutes = [
 		path: '/faculty/create-practice',
 		element: <CreatePracticePage />
 	},
+    {
+        path: '/auth',
+        element: <Auth />
+    },
 ];
 
 export default AppRoutes;
